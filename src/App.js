@@ -8,6 +8,8 @@ function App() {
     { id: 2, name: '개발팀 워크샵', date: '2025-08-02', place: '가평 펜션' },
     { id: 3, name: '신입사원 환영회', date: '2025-07-25', place: '홍대 이자카야' },
     { id: 4, name: '더존', date: '2025-07-25', place: '홍대' },
+    { id: 5, name: '더킹짐', date: '2025-07-25', place: '종로' },
+
 
   ];
 
