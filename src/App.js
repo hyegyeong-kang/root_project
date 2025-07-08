@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function App() {
   return (
@@ -47,6 +49,14 @@ function App() {
             </div>
           </Col>
         </Row>
+      </Container>
+
+      <Container>
+        <Link to="/map">
+          <Button variant="success" className="mb-4">
+            주변위치 클릭
+          </Button>
+        </Link>
       </Container>
 
       <Container>
