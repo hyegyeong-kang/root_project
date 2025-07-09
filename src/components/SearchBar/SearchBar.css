@@ -1,0 +1,19 @@
+/* SearchBar.css */
+.search-bar-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eee;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}

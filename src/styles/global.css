@@ -1,0 +1,139 @@
+/* Color Palette */
+:root {
+  --color-primary-amber: #FFB200;
+  --color-primary-olive-green: #4CAF50;
+  --color-accent-warm-white: #FAFAFA;
+  --color-accent-graphite: #333333;
+}
+
+/* Typography */
+/* Import Noto Sans KR from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+/* Import Inter from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/*
+  For Pretendard Bold or SUIT Heavy, you would typically
+  @import them if available via CDN, or include them as local fonts
+  if you have the font files. Example:
+
+  @font-face {
+    font-family: 'Pretendard Bold';
+    src: url('/fonts/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+*/
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-accent-graphite); /* Apply default text color */
+  background-color: var(--color-accent-warm-white); /* Apply default background color */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Card Hover Effect */
+.card-hover-effect {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-hover-effect:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Bootstrap Button Colors */
+.btn-primary {
+  background-color: var(--color-primary-amber) !important;
+  border-color: var(--color-primary-amber) !important;
+}
+
+.btn-success {
+  background-color: var(--color-primary-olive-green) !important;
+  border-color: var(--color-primary-olive-green) !important;
+}
+
+.btn-outline-secondary {
+  color: var(--color-primary-amber) !important;
+  border-color: var(--color-primary-amber) !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--color-primary-amber) !important;
+  color: white !important;
+}
+
+.btn-outline-primary {
+  color: var(--color-primary-amber) !important;
+  border-color: var(--color-primary-amber) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--color-primary-amber) !important;
+  color: white !important;
+}
+
+/* Custom Navbar */
+.custom-navbar {
+  background-color: var(--color-accent-warm-white) !important;
+}
+
+/* Card Styling */
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Ensures content respects border-radius */
+}
+
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Top Card Badge */
+.top-card-badge {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Added shadow */
+}
+
+.top-card-badge::before {
+  content: 'TOP';
+  position: absolute;
+  top: 10px;
+  right: -20px;
+  background-color: var(--color-primary-amber);
+  color: white;
+  padding: 2px 20px;
+  font-size: 0.8em;
+  font-weight: bold;
+  transform: rotate(45deg);
+  transform-origin: 50% 50%;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Section Animation */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animated-content {
+  animation: fadeInSlideUp 0.8s ease-out forwards;
+}
