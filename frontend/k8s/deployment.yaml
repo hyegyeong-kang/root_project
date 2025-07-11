@@ -17,6 +17,6 @@ spec:
         image: 192.168.56.200/root/frontend:202507111609
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 3000
       imagePullSecrets:
       - name: regcred
