@@ -1,0 +1,59 @@
+/* Header.css */
+.header-container {
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background */
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header-top {
+  margin-bottom: 15px;
+}
+
+.header-title-small {
+  font-size: 14px;
+  color: #666;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.header-title-large {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.header-location {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.location-icon {
+  font-size: 24px;
+}
+
+.current-location-btn,
+.select-other-location-btn {
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.current-location-btn {
+  background-color: #ffeb3b; /* Yellowish color from image */
+  border-color: #ffeb3b;
+  font-weight: bold;
+}
+
+.select-other-location-btn:hover {
+  background-color: #f0f0f0;
+}
