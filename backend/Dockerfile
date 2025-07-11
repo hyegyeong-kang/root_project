@@ -15,4 +15,4 @@ COPY app ./app
 WORKDIR /app/app
 
 # 앱 실행
-CMD ["python", "app/app.py"]
+CMD ["python", "app.py"]
