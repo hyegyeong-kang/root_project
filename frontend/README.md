@@ -25,3 +25,5 @@
 ### Jira  
 ![Jira](./README/jira.png)  
 [Jira 바로가기](https://teamonecloud.atlassian.net/jira/software/projects/KAN/boards/1)
+
+f
