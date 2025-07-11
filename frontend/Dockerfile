@@ -5,7 +5,7 @@ FROM node:16 AS build
 WORKDIR /app
 
 # package.json, package-lock.json 복사 및 의존성 설치
-COPY package*.json ./
+#COPY package*.json ./
 RUN npm install
 
 # 앱 소스 복사
