@@ -1,4 +1,5 @@
 # 1단계: 빌드 스테이지
+
 FROM node:16 AS build
 
 WORKDIR /app
