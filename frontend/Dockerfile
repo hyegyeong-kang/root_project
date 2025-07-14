@@ -21,6 +21,6 @@ FROM nginx:stable-alpine
 COPY --from=build /app/build /usr/share/nginx/html
 
 # 기본 포트 80 사용 (nginx가 80포트로 서빙)
-EXPOSE 3030
+EXPOSE 3000
 
 CMD ["nginx", "-g", "daemon off;"]
