@@ -26,4 +26,4 @@ RUN npm install -g serve
 EXPOSE 3000
 
 # 정적 서버 실행
-CMD ["serve", "-s", "my-app/build", "-l", "0.0.0.0:3000"]
+CMD ["serve", "-s", "my-app/build", "-l", "3000"]
