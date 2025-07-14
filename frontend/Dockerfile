@@ -1,26 +1,28 @@
-# 1단계: 빌드 스테이지
+# Node.js 16 LTS 사용 (원하는 버전으로 변경 가능)
+FROM node:16
 
-FROM node:16 AS build
+# 작업 디렉토리 설정
+WORKDIR /usr/src/app
 
-WORKDIR /app
+# package.json, package-lock.json 복사
+COPY package*.json ./
 
-# package.json, package-lock.json 복사 및 의존성 설치
-COPY my-app/package*.json ./
+# 의존성 설치
 RUN npm install
 
-# 앱 소스 복사
-COPY . .
+# 소스 복사
+COPY ./my-app ./my-app
 
-# React 앱 빌드
-RUN npm run build
+# 빌드
+RUN npm run --prefix my-app build
 
-# 2단계: nginx 서버로 빌드 결과를 서빙
-FROM nginx:stable-alpine
+# 빌드 결과물은 my-app/build 폴더에 생성됨
 
-# 빌드 결과물을 nginx 기본 경로로 복사
-COPY --from=build /app/build /usr/share/nginx/html
+# serve 패키지로 정적파일 서빙(필요 시)
+RUN npm install -g serve
 
-# 기본 포트 80 사용 (nginx가 80포트로 서빙)
+# 3000 포트 오픈
 EXPOSE 3000
 
-CMD ["nginx", "-g", "daemon off;"]
+# 정적 서버 실행
+CMD ["serve", "-s", "my-app/build", "-l", "3000"]
