@@ -5,7 +5,8 @@ FROM node:16
 WORKDIR /usr/src/app
 
 # package.json, package-lock.json 복사
-COPY package*.json ./
+#COPY package*.json ./
+COPY ./my-app/package*.json ./my-app/
 
 # 의존성 설치
 RUN npm install
