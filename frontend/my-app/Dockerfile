@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 COPY ./my-app/package*.json ./my-app/
 
 # 의존성 설치
-RUN npm install
+RUN npm install --prefix my-app
 
 # 소스 복사
 COPY ./my-app ./my-app
