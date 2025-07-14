@@ -20,7 +20,7 @@ RUN npm run --prefix my-app build
 # 빌드 결과물은 my-app/build 폴더에 생성됨
 
 # serve 패키지로 정적파일 서빙(필요 시)
-RUN npm install -g serve
+RUN npm install -g serve@latest
 
 # 3000 포트 오픈
 EXPOSE 3000
