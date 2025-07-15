@@ -16,4 +16,4 @@ WORKDIR /app/app
 
 # 앱 실행
 #CMD ["python", "app.py"]
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
