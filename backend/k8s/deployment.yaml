@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend-container
-        image: 192.168.56.200/root/backend:202507161530
+        image: 192.168.56.200/root/backend:202507161537
         imagePullPolicy: Always
         ports:
         - containerPort: 80
