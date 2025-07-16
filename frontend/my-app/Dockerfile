@@ -18,7 +18,7 @@ RUN npm install react-bootstrap bootstrap
 COPY ./my-app ./my-app
 
 # 빌드
-RUN npm run dev --prefix my-app build
+RUN npm run --prefix my-app build
 
 # 빌드 결과물은 my-app/build 폴더에 생성됨
 
