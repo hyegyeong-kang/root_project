@@ -10,7 +10,9 @@ COPY ./my-app/package*.json ./my-app/
 
 # 의존성 설치
 RUN npm install --prefix my-app
-RUN npm install react-router-dom
+RUN npm install react-router-dom 
+RUN npm install oidc-client-ts react-oidc-context --save
+RUN npm install react-bootstrap
 
 # 소스 복사
 COPY ./my-app ./my-app
