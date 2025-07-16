@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  text-align: center;
+  padding: 40px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.successCard {
+  background-color: #e6ffe6;
+}
+
+.errorCard {
+  background-color: #f0f2f5;
+  color: red;
+}
+
+.loadingCard {
+  background-color: #f0f2f5;
+}

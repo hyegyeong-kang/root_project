@@ -1,0 +1,12 @@
+.mainContainer {
+  min-height: 100vh;
+}
+
+.searchContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.searchResults {
+  margin-top: 20px;
+}
