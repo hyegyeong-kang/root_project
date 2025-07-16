@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend-container
-        image: 192.168.56.200/root/frontend:202507161521
+        image: 192.168.56.200/root/frontend:202507161530
         imagePullPolicy: Always
         ports:
         - containerPort: 5173
