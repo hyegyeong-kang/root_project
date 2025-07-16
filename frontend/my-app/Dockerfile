@@ -23,7 +23,7 @@ RUN npm run --prefix my-app build
 RUN npm install -g serve@latest
 
 # 3000 포트 오픈
-EXPOSE 3000
+EXPOSE 5173
 
 # 정적 서버 실행
-CMD ["serve", "-s", "my-app/build", "--listen", "3000"]
+CMD ["serve", "-s", "my-app/build", "--listen", "5173"]
