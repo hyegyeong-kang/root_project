@@ -29,4 +29,4 @@ RUN npm install -g serve@latest
 EXPOSE 5173
 
 # 정적 서버 실행
-CMD ["serve", "-s", "my-app/build", "--listen", "5173"]
+CMD ["serve", "-s", "my-app/build", "--listen", "5173", "--single"]
