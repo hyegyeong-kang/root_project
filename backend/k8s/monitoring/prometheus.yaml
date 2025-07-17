@@ -1,0 +1,5 @@
+# Prometheus가 어떤 메트릭을 어떻게 수집할지 설정하는 파일입니다.
+scrape_configs:
+  - job_name: 'fastapi-backend'
+    static_configs:
+      - targets: ['192.168.56.201:30001']
