@@ -1,8 +1,19 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from prometheus_fastapi_instrumentator import Instrumentator
 from pydantic import BaseModel
 from typing import List, Optional
 
 app = FastAPI()
+
+# Instrumentator 등록
+Instrumentator().instrument(app).expose(app)
+
+@app.post("/chat")
+async def chatbot_handler(request: Request):
+    # 여기에 챗봇 로직
+    return {"response": "안녕하세요!"}
+
+
 
 sample_data = [
     {
