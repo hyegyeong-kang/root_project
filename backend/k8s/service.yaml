@@ -8,6 +8,6 @@ spec:
   selector:
     app: backend
   ports:
-    - port: 80        # Cluster 내부 포트
+    - port: 8000        # Cluster 내부 포트
       targetPort: 8000  # Pod의 컨테이너 포트
       nodePort: 30001 # 외부에서 접근할 포트 (30000~32767 중 선택)
