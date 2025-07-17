@@ -3,6 +3,8 @@ from prometheus_fastapi_instrumentator import Instrumentator
 from pydantic import BaseModel
 from typing import List, Optional
 
+from websockets import route
+
 app = FastAPI()
 
 # Instrumentator 등록
@@ -13,7 +15,7 @@ async def chatbot_handler(request: Request):
     # 여기에 챗봇 로직
     return {"response": "안녕하세요!"}
 
-
+#print(route.path)
 
 sample_data = [
     {
