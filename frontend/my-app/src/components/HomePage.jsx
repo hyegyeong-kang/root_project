@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from "react-oidc-context";
 import { useNavigate } from 'react-router-dom';
-import { Navbar, Container, Nav, Form, FormControl, Button, Row, Col, Card, InputGroup } from 'react-bootstrap';
+import { Navbar, Container, Nav, Button, Row, Col} from 'react-bootstrap';
 import useAuthActions from '../hooks/useAuthActions';
+import SearchBar from './SearchBar';
 import styles from './HomePage.module.css';
 
 function HomePage() {
@@ -20,6 +21,11 @@ function HomePage() {
       </Container>
     );
   }
+
+  const handleSearch = (searchTerm) => {
+    console.log("Search term:", searchTerm);
+    // 검색 기능을 구현하세요.
+  };
 
   return (
     <div className={`d-flex flex-column ${styles.mainContainer}`}>
@@ -47,6 +53,14 @@ function HomePage() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      <Container className="my-4">
+        <Row className="justify-content-center">
+          <Col md={8}>
+            <SearchBar onSearch={handleSearch} />
+          </Col>
+        </Row>
+      </Container>
 
       <footer className="bg-light text-center text-lg-start mt-auto py-3">
         <Container>
