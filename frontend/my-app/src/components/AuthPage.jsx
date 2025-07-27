@@ -69,6 +69,9 @@ function AuthPage() {
           <Button variant="primary" size="lg" onClick={() => auth.signinRedirect()}>
             로그인
           </Button>
+          <Button variant="danger" size="lg" onClick={() => auth.signinRedirect({ kc_idp_hint: 'Google' })} className="mt-3">
+            Google 계정으로 로그인
+          </Button>
         </Card.Body>
       </Card>
     </Container>

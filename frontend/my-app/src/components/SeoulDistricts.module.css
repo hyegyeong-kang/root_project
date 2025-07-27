@@ -1,0 +1,20 @@
+.districtsContainer {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.districtButton {
+  width: 100%;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.districtButton:hover {
+  background-color: #343a40;
+  color: white;
+  transform: scale(1.05);
+}

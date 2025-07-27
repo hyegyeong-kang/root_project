@@ -7,15 +7,19 @@ WORKDIR /usr/src/app
 # package.json, package-lock.json 복사
 #COPY package*.json ./
 COPY ./my-app/package*.json ./my-app/
+#COPY ./frontend/my-app/package*.json ./my-app/
 
 # 의존성 설치
 RUN npm install --prefix my-app
 RUN npm install react-router-dom 
 RUN npm install oidc-client-ts react-oidc-context --save
 RUN npm install react-bootstrap bootstrap
+RUN npm install react-bootstrap-icons
 
 # 소스 복사
-COPY ./my-app ./my-app
+COPY my-app ./my-app
+#COPY ./frontend/my-app ./my-app
+
 
 # 빌드
 RUN npm run build --prefix my-app

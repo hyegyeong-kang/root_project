@@ -10,3 +10,51 @@
 .searchResults {
   margin-top: 20px;
 }
+
+/* 새로운 CSS */
+.mainContentArea {
+  position: relative;
+  overflow: hidden; /* 슬라이드 시 내용이 넘치지 않도록 */
+  width: 100%;
+  height: 100%;
+}
+
+.structuredDisplayArea {
+  flex: 1;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.structuredDisplayAreaVisible {
+  transform: translateY(0); /* 결과물 화면이 보일 때 */
+}
+
+.structuredDisplayAreaHidden {
+  transform: translateY(-100%); /* 결과물 화면이 숨겨질 때 (위로 이동) */
+}
+
+.chatbotContainer {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%; /* 챗봇 컨테이너는 전체 너비를 차지 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.chatbotHidden {
+  /* 초기 상태: 캐릭터만 보일 때 */
+  transform: translateY(0); /* 원래 위치 */
+}
+
+.chatbotFull {
+  /* 채팅창이 메인으로 보일 때 */
+  transform: translateY(0); /* 원래 위치 */
+}
+
+.chatbotPeeked {
+  /* 결과물 화면일 때 챗봇이 아래로 튀어나온 상태 */
+  transform: translateY(calc(100% - 60px)); /* 60px만 보이도록 (챗봇 튀어나온 부분 높이) */
+}
