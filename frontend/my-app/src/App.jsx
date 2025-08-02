@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AuthPage from './components/AuthPage';
 import HomePage from './components/HomePage';
+import RestaurantListPage from './components/RestaurantListPage';
+import DistrictRestaurantListPage from './components/DistrictRestaurantListPage'; // 새로 추가
 import SplashScreen from './components/SplashScreen';
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<AuthPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/restaurants/:foodType" element={<RestaurantListPage />} />
+          <Route path="/districts/:district" element={<DistrictRestaurantListPage />} /> {/* 새로 추가 */}
         </Routes>
       )}
     </>

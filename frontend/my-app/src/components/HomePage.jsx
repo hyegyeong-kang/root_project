@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from "react-oidc-context";
-import { useNavigate } from 'react-router-dom';
-import { Navbar, Container, Nav, Button, Modal, Form, InputGroup, Row, Col } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom'; // Link 추가
+import { Navbar, Container, Nav, Button, Modal, Form, InputGroup, Row, Col, Card, Spinner, Alert, Badge } from 'react-bootstrap';
 import useAuthActions from '../hooks/useAuthActions';
 import UnifiedChat from './UnifiedChat';
 import ExampleModal from './ExampleModal';
@@ -18,6 +18,9 @@ import chickenIcon from '../assets/통닭.png';
 import beerIcon from '../assets/호프.png';
 import etcIcon from '../assets/기타.png';
 
+const API_BASE_URL = 'https://7kz5085awd.execute-api.us-east-1.amazonaws.com/default';
+const SEARCH_API_URL = `${API_BASE_URL}/searchRestaurants`; // 이 부분을 실제 배포된 람다 함수의 엔드포인트로 변경해야 합니다.
+
 function HomePage() {
   const auth = useAuth();
   const navigate = useNavigate();
@@ -27,16 +30,60 @@ function HomePage() {
   const [showExampleModal, setShowExampleModal] = useState(true);
   const [recommendedPlaces, setRecommendedPlaces] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [searchError, setSearchError] = useState(null);
 
   const handleCloseExampleModal = () => setShowExampleModal(false);
+
+  // 검색 화면에서 나갈 때 검색 결과 초기화
+  useEffect(() => {
+    if (!isSearching) {
+      setSearchQuery('');
+      setSearchResults([]);
+      setSearchError(null);
+    }
+  }, [isSearching]);
+
+  const handleSearchSubmit = async () => {
+    if (searchQuery.trim() === '') {
+      setSearchResults([]);
+      return;
+    }
+
+    setSearchLoading(true);
+    setSearchError(null);
+    try {
+      const response = await fetch(`${SEARCH_API_URL}?query=${encodeURIComponent(searchQuery)}`);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `HTTP error: ${response.status}`);
+      }
+      const data = await response.json();
+      if (Array.isArray(data)) {
+        setSearchResults(data);
+      } else {
+        console.error("Search API response is not an array:", data);
+        setSearchError("검색 결과 형식이 올바르지 않습니다.");
+        setSearchResults([]);
+      }
+    } catch (err) {
+      console.error("Error fetching search results:", err);
+      setSearchError(err.message);
+      setSearchResults([]);
+    } finally {
+      setSearchLoading(false);
+    }
+  };
 
   const categories = [
     { name: '한식', icon: koreanFoodIcon },
     { name: '중국식', icon: chineseFoodIcon },
-    { name: '경양식', icon: westernFoodIcon },
+    { name: '양식', icon: westernFoodIcon },
     { name: '일식', icon: japaneseFoodIcon },
-    { name: '식육(숯불구이)', icon: bbqIcon },
-    { name: '통닭(치킨)', icon: chickenIcon },
+    { name: '고기', icon: bbqIcon },
+    { name: '통닭', icon: chickenIcon },
     { name: '호프', icon: beerIcon },
     { name: '기타', icon: etcIcon },
   ];
@@ -64,7 +111,11 @@ function HomePage() {
           <Row className="text-center my-5 g-4">
             {categories.map((category, index) => (
               <Col key={index} xs={3}>
-                <div className={styles.categoryIcon}>
+                <div 
+                  className={styles.categoryIcon}
+                  onClick={() => navigate(`/restaurants/${category.name}`)} // 이미지 클릭 시 이동
+                  style={{ cursor: 'pointer' }} // 클릭 가능한 시각적 피드백
+                >
                   <img src={category.icon} alt={category.name} />
                 </div>
                 <p>{category.name}</p>
@@ -79,7 +130,11 @@ function HomePage() {
             <Row>
               {districts.map((district, index) => (
                 <Col key={index} md={6} className="mb-3">
-                  <div className={styles.districtBox}>
+                  <div
+                    className={styles.districtBox}
+                    onClick={() => navigate(`/districts/${district}`)} // 지역 클릭 시 이동
+                    style={{ cursor: 'pointer' }} // 클릭 가능한 시각적 피드백
+                  >
                     {district}
                   </div>
                 </Col>
@@ -96,14 +151,63 @@ function HomePage() {
       <Row className="justify-content-center">
         <Col md={8}>
           <InputGroup className="mb-3">
-            <Button variant="link" onClick={() => setIsSearching(false)}>&lt;</Button>
+            <Button variant="outline-secondary" onClick={() => setIsSearching(false)}>뒤로</Button>
             <Form.Control
               placeholder="매장을 검색해보세요"
               autoFocus
               className={styles.searchInput}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearchSubmit();
+                }
+              }}
             />
+            <Button variant="primary" onClick={handleSearchSubmit}>검색</Button>
           </InputGroup>
-          {/* 검색 결과 표시 영역 */}
+
+          {searchLoading && (
+            <div className="text-center my-4">
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </div>
+          )}
+
+          {searchError && <Alert variant="danger">{searchError}</Alert>}
+
+          {!searchLoading && searchResults.length === 0 && searchQuery.trim() !== '' && (
+            <div className="text-center my-4 text-muted">검색 결과가 없습니다.</div>
+          )}
+
+          <Row className="g-4 justify-content-center">
+            {searchResults.map((resto, index) => (
+              <Col xs={12} md={8} lg={6} key={`${resto.가게이름}-${index}`} className="d-flex justify-content-center">
+                <Card className="h-100 shadow-sm" style={{ width: '100%' }}>
+                  <Card.Img
+                    variant="top"
+                    src={resto.가게이미지URL || 'https://via.placeholder.com/400x300'}
+                    onError={(e) => (e.target.src = 'https://via.placeholder.com/400x300')}
+                    style={{ height: '200px', objectFit: 'cover' }}
+                  />
+                  <Card.Body>
+                    <Card.Title>{resto.가게이름}</Card.Title>
+                    <Card.Text>
+                      <strong>분류:</strong><Badge bg="secondary" className="ms-2">{resto.업태 || '세부정보 없음'}</Badge><br />
+                      <strong>평점:</strong> {resto.평점 || 'N/A'}<br />
+                      <strong>주소:</strong> {resto.주소}
+                    </Card.Text>
+                    {resto.상세보기URL && (
+                      <a href={resto.상세보기URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                        상세보기
+                      </a>
+                    )}
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
         </Col>
       </Row>
     </Container>
@@ -123,7 +227,7 @@ function HomePage() {
       <Navbar style={{ backgroundColor: '#4A90E2' }} variant="dark" expand="lg" className="py-1">
         <Container fluid>
           <Navbar.Brand href="/" onClick={() => window.location.reload()} style={{ color: '#FFFFFF' }}>
-            <img src={beopkaLogo} width="200" height="50" className="d-inline-block align-top" alt="Beopka Flex Logo" />
+            <img src={beopkaLogo} width="180" height="45" className="d-inline-block align-top" alt="Beopka Flex Logo" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
