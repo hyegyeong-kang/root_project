@@ -8,16 +8,15 @@ function AuthPage() {
   const auth = useAuth();
   const navigate = useNavigate();
 
-  // 로그인 성공 시 URL 정리 및 UI 표시
-  useEffect(() => {
-    // URL에서 토큰 관련 파라미터를 제거하는 함수
-    const cleanUrl = () => {
-      const url = new URL(window.location.href);
-      url.searchParams.delete('code');
-      url.searchParams.delete('state');
-      window.history.replaceState({}, document.title, url.pathname + url.search);
-    };
+  // URL에서 토큰 관련 파라미터를 제거하는 함수
+  const cleanUrl = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('code');
+    url.searchParams.delete('state');
+    window.history.replaceState({}, document.title, url.pathname + url.search);
+  };
 
+  useEffect(() => {
     if (auth.isAuthenticated) {
       cleanUrl();
     }

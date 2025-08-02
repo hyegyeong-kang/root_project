@@ -1,0 +1,45 @@
+.examplePageContainer {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex; /* Flexbox 컨테이너로 설정 */
+  flex-direction: column; /* 아이템들을 세로로 정렬 */
+}
+
+.chatBubbleBase {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 18px; /* 기본 둥근 모서리 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  max-width: 70%; /* 최대 너비 */
+  width: fit-content; /* 내용에 맞게 너비 조절 */
+  word-wrap: break-word; /* 긴 단어 줄바꿈 */
+}
+
+.userBubble {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end; /* 오른쪽 정렬 */
+  border-bottom-right-radius: 3px; /* 사용자 말풍선 꼬리 */
+}
+
+.botBubble {
+  background-color: #e2e2e2;
+  color: #333;
+  align-self: flex-start; /* 왼쪽 정렬 */
+  border-bottom-left-radius: 3px; /* 봇 말풍선 꼬리 */
+}
+
+.tagsContainer {
+  margin-top: 10px;
+}
+
+.tagBadge {
+  display: inline-block;
+  background-color: #6c757d;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+  font-size: 0.8em;
+}

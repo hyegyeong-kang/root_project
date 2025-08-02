@@ -1,0 +1,95 @@
+.chatContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .messagesDisplay {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .messageBubble {
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
+  
+  .messageBubble.user {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+  }
+  
+  .messageBubble.bot {
+    background-color: #e9e9eb;
+    color: black;
+    align-self: flex-start;
+  }
+  
+  .messageInputForm {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+  }
+  
+  .messageInput {
+    flex-grow: 1;
+    border-radius: 20px 0 0 20px;
+  }
+  
+  .messageInputForm .btn {
+    border-radius: 0 20px 20px 0;
+  }
+
+  .keywordSuggestionContainer {
+    padding: 10px 20px;
+    border-top: 1px solid #eee;
+    background-color: #f9f9f9;
+  }
+  
+  .keywordSuggestionTitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  .keywordButton {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: 15px;
+  }
+
+  /* New Keyword Button Styles */
+  .keywordButtonCommon {
+    background-color: #E0E0E0; /* 밝은 회색 */
+    color: #333333; /* 다크 차콜 */
+    border-color: #B0B0B0; /* 중간 회색 */
+  }
+
+  .keywordButtonHighlight {
+    background-color: #FF6B6B; /* 강조 컬러 */
+    color: #FFFFFF; /* 흰색 */
+    border-color: #FF6B6B; /* 강조 컬러 */
+  }
+
+  .recommendationsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 반응형 그리드 */
+    gap: 20px; /* 카드 사이 간격 */
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+  }

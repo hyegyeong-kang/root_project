@@ -1,60 +1,69 @@
-.mainContainer {
-  min-height: 100vh;
-}
-
-.searchContainer {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.searchResults {
-  margin-top: 20px;
-}
-
-/* 새로운 CSS */
-.mainContentArea {
-  position: relative;
-  overflow: hidden; /* 슬라이드 시 내용이 넘치지 않도록 */
-  width: 100%;
-  height: 100%;
-}
-
-.structuredDisplayArea {
-  flex: 1;
-  transition: transform 0.5s ease-in-out;
-  height: 100%;
-}
-
-.structuredDisplayAreaVisible {
-  transform: translateY(0); /* 결과물 화면이 보일 때 */
-}
-
-.structuredDisplayAreaHidden {
-  transform: translateY(-100%); /* 결과물 화면이 숨겨질 때 (위로 이동) */
-}
-
-.chatbotContainer {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 100%; /* 챗봇 컨테이너는 전체 너비를 차지 */
+.chatIconContainer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 1000;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #4A90E2;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.5s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.chatbotHidden {
-  /* 초기 상태: 캐릭터만 보일 때 */
-  transform: translateY(0); /* 원래 위치 */
+.chatIcon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
 }
 
-.chatbotFull {
-  /* 채팅창이 메인으로 보일 때 */
-  transform: translateY(0); /* 원래 위치 */
+.chatModal .modal-content {
+    height: 80vh;
+    border-radius: 15px;
 }
 
-.chatbotPeeked {
-  /* 결과물 화면일 때 챗봇이 아래로 튀어나온 상태 */
-  transform: translateY(calc(100% - 60px)); /* 60px만 보이도록 (챗봇 튀어나온 부분 높이) */
+.searchInput {
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+
+.categoryIcon {
+    width: 80px;
+    height: 80px;
+    background-color: #f0f0f0;
+    border-radius: 8px; /* 원형에서 사각형으로 변경 */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.categoryIcon:hover {
+    transform: scale(1.1);
+}
+
+.categoryIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; /* 부모 요소의 border-radius와 일치 */
+}
+
+.districtBox {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.districtBox:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

@@ -1,7 +1,7 @@
 .place-card {
   width: 100%;
   max-width: 350px; /* 카드 너비 늘림 */
-  height: 400px; /* 카드 높이 고정 */
+  height: auto; /* 높이 자동 조절 */
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -14,7 +14,7 @@
 
 .place-card-img {
   width: 100%;
-  height: 250px; /* 이미지 높이 늘림 */
+  height: 200px; /* 이미지 높이 조절 */
   object-fit: cover;
 }
 
@@ -23,49 +23,52 @@
 }
 
 .place-card .card-title {
-  font-size: 1.3em;
+  font-size: 1.4em;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  color: #333;
 }
 
-.place-category {
-  font-size: 1em;
-  color: #666;
-  margin-bottom: 5px;
-}
-
-.place-address {
-  font-size: 1em;
+.place-category,
+.place-address,
+.place-business-hours,
+.place-parking-available,
+.place-recommended-people,
+.place-rating,
+.place-review-summary {
+  font-size: 0.95em;
   color: #555;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .place-rating {
-  display: flex;
-  align-items: center;
-  font-size: 1.1em;
-  color: #ffc107; /* Bootstrap warning color for stars */
-  margin-bottom: 10px;
-}
-
-.place-rating .star-icon {
-  margin-right: 5px;
-}
-
-.place-phone {
-  font-size: 1em;
-  color: #777;
-  margin-bottom: 10px;
-}
-
-.place-card .btn-primary {
-  background-color: #fee500; /* Kakao yellow */
-  border-color: #fee500;
-  color: #3c1e1e; /* Dark text for contrast */
+  color: #ffc107; /* 별점 색상 */
   font-weight: bold;
 }
 
-.place-card .btn-primary:hover {
-  background-color: #fada00;
-  border-color: #fada00;
+.place-keywords {
+  margin-top: 10px;
+}
+
+.place-keywords strong {
+  margin-right: 5px;
+}
+
+.place-keywords .btn {
+  border-radius: 20px; /* 키워드 버튼 둥글게 */
+  font-size: 0.8em;
+  padding: 4px 10px;
+}
+
+/* New Keyword Button Styles for PlaceCard */
+.place-keywords .keywordButtonCommon {
+  background-color: #E0E0E0; /* 밝은 회색 */
+  color: #333333; /* 다크 차콜 */
+  border-color: #B0B0B0; /* 중간 회색 */
+}
+
+.place-keywords .keywordButtonHighlight {
+  background-color: #FF6B6B; /* 강조 컬러 */
+  color: #FFFFFF; /* 흰색 */
+  border-color: #FF6B6B; /* 강조 컬러 */
 }

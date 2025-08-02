@@ -46,15 +46,29 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* width: 100%; */ /* 제거 */
+    /* height: 100%; */ /* 제거 */
+    transition: all 0.5s ease-in-out;
+}
+
+.chatbot-initial-clickable-area {
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 100%;
-    height: 100%;
-    transition: all 0.5s ease-in-out;
+    /* 내용물 크기만큼만 차지하도록 */
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+    /* background-color: rgba(0, 0, 0, 0.1); /* 디버깅용 */
 }
 
 .chatbot-initial-center .chatbot-character-image-large {
@@ -174,7 +188,7 @@
     background: none;
     border: none;
     color: #fff;
-    font-size: 0.8em;
+    font-size: 1.5em;
     cursor: pointer;
 }
 
