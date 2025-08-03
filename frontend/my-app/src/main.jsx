@@ -19,6 +19,10 @@ const cognitoAuthConfig = {
   userStore: new WebStorageStateStore({ store: window.localStorage }),
   stateStore: new WebStorageStateStore({ store: window.localStorage }),
   nonceStore: new WebStorageStateStore({ store: window.localStorage }),
+  automaticSilentRenew: true,
+  onSigninCallback: () => {
+    window.history.replaceState({}, document.title, window.location.pathname);
+  },
   monitorSession: false,
 };
 

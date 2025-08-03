@@ -9,16 +9,8 @@ function AuthPage() {
   const navigate = useNavigate();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  // URL에서 토큰 관련 파라미터를 제거하는 함수
-  const cleanUrl = () => {
-    const url = new URL(window.location.href);
-    url.searchParams.delete('code');
-    window.history.replaceState({}, document.title, url.pathname + url.search);
-  };
-
   useEffect(() => {
     if (auth.isAuthenticated) {
-      cleanUrl();
       setShowSuccessMessage(true);
     }
   }, [auth.isAuthenticated]);

@@ -27,7 +27,7 @@ function App() {
         <SplashScreen />
       ) : (
         <Routes>
-          <Route path="/" element={<AuthPage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<AuthPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/restaurants/:foodType" element={<RestaurantListPage />} />
