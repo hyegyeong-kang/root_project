@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from "react-oidc-context";
 import { useNavigate, Link } from 'react-router-dom'; // Link 추가
 import { Navbar, Container, Nav, Button, Modal, Form, InputGroup, Row, Col, Card, Spinner, Alert, Badge } from 'react-bootstrap';
@@ -25,6 +25,15 @@ function HomePage() {
   const auth = useAuth();
   const navigate = useNavigate();
   const { handleSignOut } = useAuthActions();
+
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   const [showChat, setShowChat] = useState(false);
   const [showExampleModal, setShowExampleModal] = useState(true);
@@ -73,6 +82,7 @@ function HomePage() {
       setSearchError(err.message);
       setSearchResults([]);
     } finally {
+      if (!isMounted.current) return;
       setSearchLoading(false);
     }
   };
@@ -238,7 +248,7 @@ function HomePage() {
                   <Button variant="outline-light" onClick={handleSignOut}>로그아웃</Button>
                 </>
               ) : (
-                <Button variant="outline-light" onClick={() => auth.signinRedirect()}>로그인</Button>
+                <Button variant="outline-light" onClick={() => navigate('/login')}>로그인</Button>
               )}
             </Nav>
           </Navbar.Collapse>

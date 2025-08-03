@@ -10,6 +10,15 @@ function UnifiedChat({ setRecommendedPlaces, closeChat }) {
   const [inputMessage, setInputMessage] = useState('');
   const messagesEndRef = useRef(null);
 
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -27,6 +36,7 @@ function UnifiedChat({ setRecommendedPlaces, closeChat }) {
     setMessages((prevMessages) => [...prevMessages, newMessage]);
     if (!keyword) setInputMessage('');
 
+    if (!isMounted.current) return;
     try {
       const response = await fetch(API_ENDPOINT, {
         method: 'POST',
